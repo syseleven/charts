@@ -140,8 +140,6 @@ Parameter | Description | Default
 `autoscalingGroupsnamePrefix[].name` | GCE MIG name prefix (the full name is invalid) | None. Required for `cloudProvider=gce`
 `autoscalingGroupsnamePrefix[].maxSize` | maximum MIG size | None. Required for `cloudProvider=gce`
 `autoscalingGroupsnamePrefix[].minSize` | minimum MIG size |  None. Required for `cloudProvider=gce`
-`sslCertPath` | Path on the pod where ssl ca cert exists | `/etc/ssl/certs/ca-certificates.crt`
-`sslCertHostPath` | Path on the host where ssl ca cert exists | `/etc/ssl/certs/ca-certificates.crt`
 `cloudProvider` | `aws` or `spotinst` are currently supported for AWS. `gce` for GCE. `azure` for Azure AKS | `aws`
 `image.repository` | Image | `k8s.gcr.io/cluster-autoscaler`
 `image.tag` | Image tag  | `v1.13.1`
@@ -150,8 +148,9 @@ Parameter | Description | Default
 `extraArgs` | additional container arguments | `{}`
 `podDisruptionBudget` | Pod disruption budget | `maxUnavailable: 1`
 `extraEnv` | additional container environment variables | `{}`
-`envFromConfigMap` |  additional container environment variables from a configmap | `[]`
-`envFromSecret` | additional container environment variables from secret | `nil`
+`envFromConfigMap` | additional container environment variables from a configmap | `{}`
+`envFromSecret` | secret name containing keys that will be exposed as envs | `nil`
+`extraEnvSecrets` | additional container environment variables from a secret | `{}`
 `nodeSelector` | node labels for pod assignment | `{}`
 `podAnnotations` | annotations to add to each pod | `{}`
 `deployment.apiVersion` | apiVersion for the deployment | `extensions/v1beta1`
